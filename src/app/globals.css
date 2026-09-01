@@ -1,0 +1,186 @@
+/* biome-ignore-all lint/complexity/noImportantStyles: a regra de
+   prefers-reduced-motion so cumpre seu papel com !important — ela precisa
+   vencer qualquer animacao declarada depois dela na cascata. */
+@import "tailwindcss";
+
+/* =====================================================================
+   SISTEMA DE DESIGN
+   ---------------------------------------------------------------------
+   Identidade: placa de metal escuro cortada em ângulo, com uma fresta de
+   luz violeta por baixo e detalhe em ouro velho. A referência é armadura
+   e cartaz de show — não cartão arredondado de site de software.
+
+   No Tailwind 4 a configuração fica aqui no CSS, dentro de @theme.
+   Cada cor vira uma classe automaticamente: --color-vibranium pode ser
+   usada como text-vibranium, bg-vibranium, border-vibranium.
+   ===================================================================== */
+
+@theme {
+  /* --- Cores ------------------------------------------------------- */
+  /* Preto com desvio para o violeta: não é #000 nem cinza neutro. */
+  --color-obsidiana: #0a0810;
+  --color-basalto: #14111d;
+  --color-grafite: #1e1a2b;
+
+  /* Acento principal: a luz do metal. */
+  --color-vibranium: #7f4dff;
+  --color-vibranium-claro: #a888ff;
+
+  /* Acento secundário: gravação em ouro velho. */
+  --color-ouro: #c2922f;
+  --color-ouro-claro: #e2b752;
+
+  /* Texto. */
+  --color-areia: #e8e3da;
+  --color-pedra: #9990a8;
+
+  /* --- Tipografia -------------------------------------------------- */
+  /* Oswald é condensada: ocupa pouca largura e tem cara de cartaz.
+     Barlow é de largura normal e um pouco quadrada: parece técnica.
+     A diferença de largura entre as duas é o que separa título de texto. */
+  --font-display: var(--fonte-display), "Arial Narrow", sans-serif;
+  --font-corpo: var(--fonte-corpo), system-ui, sans-serif;
+
+  /* --- Movimento --------------------------------------------------- */
+  --ease-metal: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* =====================================================================
+   BASE
+   ===================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  /* Compensa o cabeçalho fixo quando o link leva a uma âncora. */
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-obsidiana);
+  color: var(--color-areia);
+  font-family: var(--font-corpo);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Textura: grão fino por cima de tudo, para o preto não ficar chapado.
+   Fica atrás do conteúdo e não intercepta cliques. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(
+      circle at 15% -10%,
+      rgba(127, 77, 255, 0.16),
+      transparent 45%
+    ),
+    radial-gradient(circle at 95% 8%, rgba(194, 146, 47, 0.08), transparent 40%);
+}
+
+::selection {
+  background: var(--color-vibranium);
+  color: #fff;
+}
+
+/* Foco visível pelo teclado. Sem isso o site fica inutilizável para
+   quem navega por Tab, e é um erro de acessibilidade real. */
+:focus-visible {
+  outline: 2px solid var(--color-vibranium-claro);
+  outline-offset: 3px;
+}
+
+/* =====================================================================
+   PLACAS ANGULARES — o elemento de assinatura
+   ---------------------------------------------------------------------
+   Em vez de cantos arredondados, os blocos têm cantos CORTADOS, como
+   chapa de metal. É o que dá a leitura de armadura.
+   ===================================================================== */
+
+.placa {
+  /* Corta o canto superior esquerdo e o inferior direito. */
+  clip-path: polygon(
+    22px 0,
+    100% 0,
+    100% calc(100% - 22px),
+    calc(100% - 22px) 100%,
+    0 100%,
+    0 22px
+  );
+  background-color: var(--color-basalto);
+}
+
+.placa-fina {
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+}
+
+/* Borda das placas. clip-path corta bordas normais, então a borda é
+   desenhada como um fundo por baixo, 1px maior em cada lado. */
+.placa-borda {
+  padding: 1px;
+  background: linear-gradient(
+    160deg,
+    rgba(127, 77, 255, 0.55),
+    rgba(127, 77, 255, 0.06) 40%,
+    rgba(194, 146, 47, 0.35)
+  );
+}
+
+.placa-borda-ouro {
+  background: linear-gradient(
+    160deg,
+    rgba(194, 146, 47, 0.6),
+    rgba(194, 146, 47, 0.08) 55%,
+    rgba(127, 77, 255, 0.3)
+  );
+}
+
+/* =====================================================================
+   TIPOGRAFIA DE TÍTULO
+   ===================================================================== */
+
+.titulo-cartaz {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Régua de vibranium: filete curto que marca o começo de uma seção.
+   Substitui o rótulo em caixa alta que todo site coloca acima do título. */
+.regua::before {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(90deg, var(--color-vibranium), var(--color-ouro));
+}
+
+/* =====================================================================
+   MOVIMENTO
+   ===================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
