@@ -66,7 +66,7 @@ export const projetos: Projeto[] = [
       "Zero alocação de memória na thread de áudio",
     ],
     tecnologias: ["C++", "JUCE 8", "VST3", "DSP", "Visual Studio"],
-    imagem: "/slash2.jpg",
+    imagem: "/plugin-blues.jpg",
     links: [
       {
         rotulo: "Baixar plugin",
@@ -101,6 +101,7 @@ export const projetos: Projeto[] = [
       "Camada de compatibilidade para compilar em mais de uma versão do JUCE",
     ],
     tecnologias: ["C++", "JUCE 8", "VST3", "DSP", "Detecção de altura"],
+    imagem: "/arauto.jpg",
     links: [
       {
         rotulo: "Baixar plugin",

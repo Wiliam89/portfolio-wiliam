@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { PadraoGeometrico } from "@/components/ui/Base";
+import Pantera from "@/components/ui/Pantera";
 import { projetos } from "@/data/projetos";
 import { site } from "@/data/site";
 
@@ -28,6 +29,12 @@ export default function Capa() {
     <section className="relative flex min-h-dvh items-center overflow-hidden px-6 pt-28 pb-16">
       {/* Textura geométrica ao fundo, bem apagada. */}
       <PadraoGeometrico className="pointer-events-none absolute inset-0 text-vibranium/[0.06]" />
+
+      {/* A pantera ocupa a direita da capa. Opacidade reduzida de proposito:
+          aqui ela acompanha o nome, nao disputa com ele. */}
+      <div className="pointer-events-none absolute -right-10 bottom-0 hidden w-[38%] max-w-md md:block lg:right-4">
+        <Pantera variante="perfil" opacidade={0.55} className="w-full" />
+      </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <motion.p {...entrada(0)} className="mb-5 text-sm text-pedra">
