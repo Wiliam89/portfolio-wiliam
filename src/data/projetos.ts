@@ -166,7 +166,7 @@ export const projetos: Projeto[] = [
     slug: "central-de-downloads",
     nome: "BRASA Audio",
     categoria: "Site",
-    status: "em-desenvolvimento",
+    status: "publicado",
     ano: "2026",
     resumo:
       "Site próprio para distribuir os plugins: identidade visual de rock, faixa rolante de equipamentos e download sempre na versão mais recente.",
@@ -185,13 +185,15 @@ export const projetos: Projeto[] = [
     tecnologias: ["Next.js", "TypeScript", "Tailwind CSS"],
     imagem: "/central-downloads.jpg",
     links: [
-      // QUANDO O SITE ESTIVER NO AR: apague as duas barras das cinco
-      // linhas abaixo e troque o endereço.
-      // {
-      //   rotulo: "Abrir o site",
-      //   href: "https://endereco-do-site.vercel.app",
-      //   peso: "principal",
-      // },
+      {
+        rotulo: "Abrir o site",
+        href: "https://wo-brasaaudio.vercel.app",
+        peso: "principal",
+      },
+      {
+        rotulo: "Ver código",
+        href: "https://github.com/Wiliam89/wo-brasaaudio",
+      },
     ],
   },
 ];
