@@ -32,9 +32,12 @@ export default function Capa() {
 
       {/* A pantera ocupa a direita da capa. Opacidade reduzida de proposito:
           aqui ela acompanha o nome, nao disputa com ele. */}
-      <div className="pointer-events-none absolute -right-10 bottom-0 hidden w-[38%] max-w-md md:block lg:right-4">
+      <motion.div
+        {...entrada(0.12)}
+        className="pointer-events-none absolute -right-10 bottom-0 hidden w-[38%] max-w-md md:block lg:right-4"
+      >
         <Pantera variante="perfil" opacidade={0.55} className="w-full" />
-      </div>
+      </motion.div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <motion.p {...entrada(0)} className="mb-5 text-sm text-pedra">

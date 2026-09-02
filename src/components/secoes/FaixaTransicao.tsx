@@ -1,5 +1,6 @@
 import { PadraoGeometrico } from "@/components/ui/Base";
 import Pantera from "@/components/ui/Pantera";
+import Revelar from "@/components/ui/Revelar";
 
 // Faixa entre a capa e os projetos.
 //
@@ -16,13 +17,22 @@ export default function FaixaTransicao() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-[radial-gradient(ellipse_at_50%_100%,rgba(127,77,255,0.18),transparent_70%)]" />
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 py-16 md:py-20">
-        <Pantera variante="corpo" className="w-full max-w-2xl" />
+        <Revelar className="w-full max-w-2xl">
+          <Pantera variante="corpo" className="w-full" />
+        </Revelar>
 
-        <div className="h-px w-full max-w-2xl bg-[linear-gradient(90deg,transparent,rgba(127,77,255,0.7)_25%,rgba(194,146,47,0.7)_70%,transparent)]" />
+        <Revelar
+          atraso={0.1}
+          className="h-px w-full max-w-2xl bg-[linear-gradient(90deg,transparent,rgba(127,77,255,0.7)_25%,rgba(194,146,47,0.7)_70%,transparent)]"
+        >
+          <span className="sr-only" />
+        </Revelar>
 
-        <p className="max-w-md text-center text-sm leading-relaxed text-pedra">
-          Quatro projetos, dois deles prontos para baixar agora.
-        </p>
+        <Revelar atraso={0.18}>
+          <p className="max-w-md text-center text-sm leading-relaxed text-pedra">
+            Quatro projetos, dois deles prontos para baixar agora.
+          </p>
+        </Revelar>
       </div>
     </section>
   );

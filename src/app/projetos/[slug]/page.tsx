@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Cabecalho from "@/components/layout/Cabecalho";
 import Rodape from "@/components/layout/Rodape";
 import { Placa, Selo } from "@/components/ui/Base";
+import Revelar from "@/components/ui/Revelar";
 import { acharProjeto, projetos, rotuloStatus } from "@/data/projetos";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -84,48 +85,54 @@ export default async function PaginaProjeto({ params }: Props) {
           )}
 
           {projeto.imagem && (
-            <Placa className="mt-14">
-              <div className="relative aspect-video">
-                <Image
-                  src={projeto.imagem}
-                  alt={`Imagem do projeto ${projeto.nome}`}
-                  fill
-                  sizes="(max-width: 896px) 100vw, 896px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </Placa>
+            <Revelar className="mt-14">
+              <Placa>
+                <div className="relative aspect-video">
+                  <Image
+                    src={projeto.imagem}
+                    alt={`Imagem do projeto ${projeto.nome}`}
+                    fill
+                    sizes="(max-width: 896px) 100vw, 896px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </Placa>
+            </Revelar>
           )}
 
-          <div className="mt-14 flex max-w-2xl flex-col gap-5 leading-relaxed text-pedra">
+          <Revelar className="mt-14 flex max-w-2xl flex-col gap-5 leading-relaxed text-pedra">
             {projeto.descricao.map((paragrafo) => (
               <p key={paragrafo.slice(0, 40)}>{paragrafo}</p>
             ))}
-          </div>
+          </Revelar>
 
-          <h2 className="titulo-cartaz regua mt-16 text-3xl text-areia">
-            O que tem dentro
-          </h2>
-          <ul className="mt-6 flex max-w-2xl flex-col">
-            {projeto.destaques.map((d) => (
-              <li
-                key={d}
-                className="border-t border-grafite py-4 leading-relaxed text-pedra"
-              >
-                {d}
-              </li>
-            ))}
-          </ul>
+          <Revelar>
+            <h2 className="titulo-cartaz regua mt-16 text-3xl text-areia">
+              O que tem dentro
+            </h2>
+            <ul className="mt-6 flex max-w-2xl flex-col">
+              {projeto.destaques.map((d) => (
+                <li
+                  key={d}
+                  className="border-t border-grafite py-4 leading-relaxed text-pedra"
+                >
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </Revelar>
 
-          <h2 className="titulo-cartaz regua mt-16 text-3xl text-areia">
-            Tecnologias
-          </h2>
-          <div className="mt-6 flex flex-wrap gap-2.5">
-            {projeto.tecnologias.map((t) => (
-              <Selo key={t}>{t}</Selo>
-            ))}
-          </div>
+          <Revelar>
+            <h2 className="titulo-cartaz regua mt-16 text-3xl text-areia">
+              Tecnologias
+            </h2>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {projeto.tecnologias.map((t) => (
+                <Selo key={t}>{t}</Selo>
+              ))}
+            </div>
+          </Revelar>
         </div>
       </main>
 

@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { Placa, Secao, TituloSecao } from "@/components/ui/Base";
+import Revelar from "@/components/ui/Revelar";
 import { site } from "@/data/site";
 
 export default function Sobre() {
   return (
     <Secao id="sobre">
       <div className="grid gap-12 md:grid-cols-[280px_1fr] md:gap-16">
-        <div>
+        <Revelar>
           <Placa fina>
             <div className="relative aspect-square">
               <Image
@@ -19,9 +20,9 @@ export default function Sobre() {
               />
             </div>
           </Placa>
-        </div>
+        </Revelar>
 
-        <div>
+        <Revelar atraso={0.1}>
           <TituloSecao>Sobre</TituloSecao>
 
           <div className="mt-8 flex max-w-2xl flex-col gap-5 leading-relaxed text-pedra">
@@ -47,7 +48,7 @@ export default function Sobre() {
               Estou aberto a oportunidades e a projetos sob encomenda.
             </p>
           </div>
-        </div>
+        </Revelar>
       </div>
     </Secao>
   );

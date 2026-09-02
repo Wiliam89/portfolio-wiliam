@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Placa, Secao, Selo, TituloSecao } from "@/components/ui/Base";
+import Revelar from "@/components/ui/Revelar";
 import { type Projeto, projetos, rotuloStatus } from "@/data/projetos";
 
 // Cada projeto é uma faixa larga, com a imagem alternando de lado. Não é
@@ -105,16 +106,24 @@ function LinhaProjeto({
 export default function Projetos() {
   return (
     <Secao id="projetos">
-      <TituloSecao>Projetos</TituloSecao>
+      <Revelar>
+        <TituloSecao>Projetos</TituloSecao>
+      </Revelar>
 
-      <p className="mt-6 mb-14 max-w-2xl leading-relaxed text-pedra">
-        Quatro projetos em áreas diferentes. Os dois plugins estão publicados e
-        podem ser baixados agora; os outros dois estão em construção.
-      </p>
+      <Revelar atraso={0.08}>
+        <p className="mt-6 mb-14 max-w-2xl leading-relaxed text-pedra">
+          Quatro projetos em áreas diferentes. Os dois plugins estão publicados
+          e podem ser baixados agora; os outros dois estão em construção.
+        </p>
+      </Revelar>
 
       <div className="flex flex-col gap-8">
         {projetos.map((p, i) => (
-          <LinhaProjeto key={p.slug} projeto={p} indice={i} />
+          // Escalonamento pequeno e com teto: sem o Math.min, o oitavo
+          // projeto do futuro levaria quase um segundo para aparecer.
+          <Revelar key={p.slug} atraso={Math.min(i, 2) * 0.08}>
+            <LinhaProjeto projeto={p} indice={i} />
+          </Revelar>
         ))}
       </div>
     </Secao>
