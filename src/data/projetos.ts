@@ -164,24 +164,35 @@ export const projetos: Projeto[] = [
   },
   {
     slug: "central-de-downloads",
-    nome: "Central de downloads dos plugins",
+    nome: "BRASA Audio",
     categoria: "Site",
     status: "em-desenvolvimento",
     ano: "2026",
     resumo:
-      "Site dedicado para instalar os plugins: escolher o formato, entender os requisitos e baixar sem passar pelo GitHub.",
+      "Site próprio para distribuir os plugins: identidade visual de rock, faixa rolante de equipamentos e download sempre na versão mais recente.",
     descricao: [
-      "Um repositório de código não é lugar para um guitarrista baixar um plugin. A central de downloads existe para separar as duas audiências: quem quer ler o código continua no GitHub, quem quer usar o plugin tem uma página feita para isso.",
-      "A ideia é reunir num lugar só a escolha entre VST3 e aplicativo independente, os requisitos de sistema, o passo a passo de instalação e as respostas às dúvidas que aparecem sempre.",
+      "Um repositório de código não é lugar para um guitarrista baixar um plugin. O BRASA Audio existe para separar as duas audiências: quem quer ler o código continua no GitHub, quem quer usar o plugin tem uma página feita para isso.",
+      "Identidade visual própria, deliberadamente diferente deste portfólio: preto quente, laranja de válvula acesa e vermelho de cartaz de show, com tipografia de cartaz de banda.",
+      "Os botões de download apontam para o lançamento mais recente de cada repositório. Publicar uma versão nova no GitHub atualiza o site sozinho, sem tocar em uma linha de código.",
     ],
     destaques: [
-      "Escolha entre VST3 para DAW e aplicativo independente",
-      "Instruções de instalação por sistema operacional",
-      "Histórico de versões e novidades de cada lançamento",
-      "Perguntas frequentes sobre configuração de entrada e latência",
+      "Download sempre na versão mais recente, sem manutenção manual",
+      "Faixa rolante de equipamentos com tratamento de cor unificado",
+      "Página própria para cada plugin, gerada a partir de um arquivo de dados",
+      "Passo a passo de instalação e perguntas frequentes",
+      "Silhueta aplicada como máscara de CSS, colorida pela paleta do site",
     ],
     tecnologias: ["Next.js", "TypeScript", "Tailwind CSS"],
-    links: [],
+    imagem: "/central-downloads.jpg",
+    links: [
+      // QUANDO O SITE ESTIVER NO AR: apague as duas barras das cinco
+      // linhas abaixo e troque o endereço.
+      // {
+      //   rotulo: "Abrir o site",
+      //   href: "https://endereco-do-site.vercel.app",
+      //   peso: "principal",
+      // },
+    ],
   },
 ];
 
