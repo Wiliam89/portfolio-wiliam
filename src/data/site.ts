@@ -16,7 +16,7 @@ export const site = {
   local: "Minas Gerais, Brasil",
   whatsapp: "5537988378429",
   github: "https://github.com/Wiliam89",
-  linkedin: "https://linkedin.com/in/wiliam-oliveira-0108b12b9/",
+  linkedin: "https://www.linkedin.com/in/wiliamoliveira-ti/",
   foto: "/portfolio.jpg",
 } as const;
 
