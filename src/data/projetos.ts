@@ -45,6 +45,48 @@ export type Projeto = {
 
 export const projetos: Projeto[] = [
   {
+    slug: "woodshed",
+    nome: "Woodshed",
+    categoria: "Sistema web",
+    status: "publicado",
+    ano: "2026",
+    resumo:
+      "Sala de estudo de guitarra: partitura e tablatura tocando com cursor, velocidade de 25% a 100% da original, rotina diária e os trejeitos de cada guitarrista marcados no compasso em que acontecem.",
+    descricao: [
+      "Site de estudo de guitarra construído em Next.js. Ele lê arquivos de tablatura Guitar Pro de uma pasta do próprio computador, desenha partitura e tablatura juntas e toca a música com o cursor acompanhando nota a nota.",
+      "Não existe banco de dados nem login. A biblioteca, o progresso, a rotina e as anotações ficam em arquivos JSON dentro da pasta do usuário, lidos e gravados pelo navegador com a File System Access API — as músicas nunca saem da máquina, e o servidor entrega apenas o código.",
+      "O método de estudo é o que orienta o produto: a velocidade desce até 25% e sobe de cinco em cinco por botão, seta do teclado ou barra, nunca passando de 100%; cada trecho tem a própria escada de velocidade, e três execuções limpas promovem o trecho em 5%. A trilha da guitarra estudada pode ser silenciada, deixando o resto da banda como backing track.",
+      "Os trejeitos — o polegar por cima do braço do Hendrix, o vibrato largo do Slash, o bend de um tom e meio do Gilmour — são dados, não código: vivem em pacotes de ídolo em JSON, com diagrama de braço desenhado em SVG e um editor no próprio site. Quando o cursor entra num compasso marcado, o card aparece sobre a partitura com o diagrama e o passo a passo.",
+    ],
+    destaques: [
+      "Partitura e tablatura renderizadas e tocadas no navegador com alphaTab, servido pelo próprio site",
+      "Velocidade de 25% a 100%, com escada de 5% por trecho e a velocidade de cada música salva",
+      "Leitura e gravação direto na pasta do usuário, sem banco de dados e sem login",
+      "Rotina do dia gerada a partir dos minutos disponíveis, dividida em blocos conforme o nível",
+      "Trejeitos como pacotes de ídolo em JSON, com editor de diagrama de braço embutido",
+      "Backing track de áudio real preso ao cursor da partitura, com velocidade sem alterar o tom",
+      "Modo palco: escolha da saída de áudio e monitor da entrada, para a pedaleira soar junto com o backing",
+    ],
+    tecnologias: [
+      "Next.js 16",
+      "TypeScript",
+      "React 19",
+      "alphaTab",
+      "File System Access API",
+      "Web Audio API",
+      "Vercel",
+    ],
+    imagem: "/woodshed.jpg",
+    links: [
+      {
+        rotulo: "Abrir o site",
+        href: "https://wood-shed.vercel.app",
+        peso: "principal",
+      },
+    ],
+    destaque: true,
+  },
+  {
     slug: "plugin-blues",
     nome: "plugin-Blues",
     categoria: "Plugin de áudio",
