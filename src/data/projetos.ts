@@ -175,6 +175,7 @@ export const projetos: Projeto[] = [
       "Agenda com grade semanal e travas de exclusão para impedir marcação dupla",
       "Fuso horário por clínica",
       "Trilha de auditoria somente-inserção, gravada na mesma transação da operação",
+      "Existe um ambiente de demonstração aberto: dá para criar uma conta em segundos e percorrer o fluxo de paciente e de profissional. É um ambiente de testes, então os documentos gerados ali não têm valor legal.",
       "Migrações versionadas e verificação automatizada do ambiente",
       "Pagamento como parte do fluxo: o paciente entra na fila depois de pagar",
     ],
@@ -189,14 +190,14 @@ export const projetos: Projeto[] = [
     ],
     imagem: "/telemed1.jpg",
     links: [
-      // QUANDO A PLATAFORMA ESTIVER NO AR: apague as duas barras das cinco
-      // linhas abaixo e troque o endereço. O botão aparece sozinho, em
-      // destaque, no card da página inicial e na página do projeto.
-      // {
-      //   rotulo: "Abrir a plataforma",
-      //   href: "https://endereco-da-plataforma.com.br",
-      //   peso: "principal",
-      // },
+      // Aponta direto para a tela de entrada, e não para a raiz: hoje a raiz
+      // responde 404. Quando ela voltar a abrir, basta apagar o "/entrar".
+      {
+        rotulo: "Abrir a demonstração",
+        href: "https://telemedicina-lake.vercel.app/entrar",
+        peso: "principal",
+      },
+      
       {
         rotulo: "Ver código",
         href: "https://github.com/Wiliam89/telemedicina",

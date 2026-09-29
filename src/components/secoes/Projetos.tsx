@@ -112,9 +112,10 @@ export default function Projetos() {
 
       <Revelar atraso={0.08}>
         <p className="mt-6 mb-14 max-w-2xl leading-relaxed text-pedra">
-          Cinco projetos em áreas diferentes. Os dois plugins e os dois sites
-          estão no ar e podem ser abertos agora; a plataforma de telemedicina
-          está em construção.
+         Cinco projetos em áreas diferentes. Todos podem ser abertos ou
+         baixados agora: os dois plugins, os dois sites e o ambiente de
+         demonstração da plataforma de telemedicina, que segue em
+         desenvolvimento.
         </p>
       </Revelar>
 
