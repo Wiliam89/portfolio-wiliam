@@ -164,18 +164,18 @@ export const projetos: Projeto[] = [
     status: "em-desenvolvimento",
     ano: "2026",
     resumo:
-      "Plataforma multi-clínica para atendimento a distância, com agenda, prontuário, pagamento antes da fila e segurança no banco de dados.",
+      "Plataforma multi-clínica para atendimento a distância, com agenda, prontuário, pagamento antes da fila e segurança no banco de dados. No ar como demonstração aberta.",
     descricao: [
       "Plataforma de telemedicina construída para uso comercial real, no modelo multi-clínica: várias clínicas convivem na mesma instalação, cada uma enxergando apenas os próprios dados.",
       "O isolamento entre clínicas não é feito só no código da aplicação. Ele é imposto no próprio banco de dados, por políticas de segurança em nível de linha, de modo que uma consulta mal escrita não consegue vazar dados de outra clínica.",
       "O projeto é um monorepo com API e site separados, migrações versionadas e uma trilha de auditoria que só aceita inserção.",
+      "A plataforma está no ar como ambiente de demonstração: dá para criar uma conta em menos de um minuto e percorrer o caminho inteiro, do cadastro ao atendimento, tanto como paciente quanto como profissional. Por ser ambiente de teste, os documentos emitidos ali não têm valor legal.",
     ],
     destaques: [
       "Arquitetura multi-clínica com isolamento imposto no banco de dados",
       "Agenda com grade semanal e travas de exclusão para impedir marcação dupla",
       "Fuso horário por clínica",
       "Trilha de auditoria somente-inserção, gravada na mesma transação da operação",
-      "Existe um ambiente de demonstração aberto: dá para criar uma conta em segundos e percorrer o fluxo de paciente e de profissional. É um ambiente de testes, então os documentos gerados ali não têm valor legal.",
       "Migrações versionadas e verificação automatizada do ambiente",
       "Pagamento como parte do fluxo: o paciente entra na fila depois de pagar",
     ],
@@ -190,14 +190,11 @@ export const projetos: Projeto[] = [
     ],
     imagem: "/telemed1.jpg",
     links: [
-      // Aponta direto para a tela de entrada, e não para a raiz: hoje a raiz
-      // responde 404. Quando ela voltar a abrir, basta apagar o "/entrar".
       {
-        rotulo: "Abrir a demonstração",
-        href: "https://telemedicina-lake.vercel.app/entrar",
+        rotulo: "Abrir a plataforma",
+        href: "https://telemedicina-lake.vercel.app",
         peso: "principal",
       },
-      
       {
         rotulo: "Ver código",
         href: "https://github.com/Wiliam89/telemedicina",
