@@ -1,0 +1,250 @@
+// ---------------------------------------------------------------------
+// PROJETOS
+//
+// ESTE E O UNICO ARQUIVO QUE VOCE PRECISA EDITAR PARA ADICIONAR UM
+// PROJETO NOVO AO PORTFOLIO.
+//
+// Copie um bloco inteiro (de "{" ate "},"), cole no fim da lista e troque
+// os valores. O site cria sozinho: o card na pagina inicial, a pagina
+// propria do projeto em /projetos/<slug>, e a entrada no mapa do site.
+//
+// O TypeScript avisa se voce esquecer um campo obrigatorio.
+// ---------------------------------------------------------------------
+
+export type StatusProjeto = "publicado" | "em-desenvolvimento" | "concluido";
+
+export type LinkProjeto = {
+  /** Texto do botao. Diga o que acontece: "Baixar plugin", nao "Clique aqui". */
+  rotulo: string;
+  href: string;
+  /** "principal" ganha destaque visual. Use um por projeto, no maximo. */
+  peso?: "principal" | "secundario";
+};
+
+export type Projeto = {
+  /** Vira o endereco da pagina: /projetos/<slug>. Só letras minúsculas e hífen. */
+  slug: string;
+  nome: string;
+  /** Uma linha. Aparece no card da pagina inicial. */
+  resumo: string;
+  /** Categoria curta, mostrada acima do nome. */
+  categoria: string;
+  status: StatusProjeto;
+  ano: string;
+  /** Paragrafos da pagina do projeto. Cada item vira um paragrafo. */
+  descricao: string[];
+  /** O que voce resolveu ali. Aparece como lista na pagina do projeto. */
+  destaques: string[];
+  tecnologias: string[];
+  /** Caminho da imagem dentro de /public. Deixe vazio para usar o padrao grafico. */
+  imagem?: string;
+  links: LinkProjeto[];
+  /** true = aparece maior, no topo da lista. */
+  destaque?: boolean;
+};
+
+export const projetos: Projeto[] = [
+  {
+    slug: "woodshed",
+    nome: "Woodshed",
+    categoria: "Sistema web",
+    status: "publicado",
+    ano: "2026",
+    resumo:
+      "Sala de estudo de guitarra: partitura e tablatura tocando com cursor, velocidade de 25% a 100% da original, rotina diária e os trejeitos de cada guitarrista marcados no compasso em que acontecem.",
+    descricao: [
+      "Site de estudo de guitarra construído em Next.js. Ele lê arquivos de tablatura Guitar Pro de uma pasta do próprio computador, desenha partitura e tablatura juntas e toca a música com o cursor acompanhando nota a nota.",
+      "Não existe banco de dados nem login. A biblioteca, o progresso, a rotina e as anotações ficam em arquivos JSON dentro da pasta do usuário, lidos e gravados pelo navegador com a File System Access API — as músicas nunca saem da máquina, e o servidor entrega apenas o código.",
+      "O método de estudo é o que orienta o produto: a velocidade desce até 25% e sobe de cinco em cinco por botão, seta do teclado ou barra, nunca passando de 100%; cada trecho tem a própria escada de velocidade, e três execuções limpas promovem o trecho em 5%. A trilha da guitarra estudada pode ser silenciada, deixando o resto da banda como backing track.",
+      "Os trejeitos — o polegar por cima do braço do Hendrix, o vibrato largo do Slash, o bend de um tom e meio do Gilmour — são dados, não código: vivem em pacotes de ídolo em JSON, com diagrama de braço desenhado em SVG e um editor no próprio site. Quando o cursor entra num compasso marcado, o card aparece sobre a partitura com o diagrama e o passo a passo.",
+    ],
+    destaques: [
+      "Partitura e tablatura renderizadas e tocadas no navegador com alphaTab, servido pelo próprio site",
+      "Velocidade de 25% a 100%, com escada de 5% por trecho e a velocidade de cada música salva",
+      "Leitura e gravação direto na pasta do usuário, sem banco de dados e sem login",
+      "Rotina do dia gerada a partir dos minutos disponíveis, dividida em blocos conforme o nível",
+      "Trejeitos como pacotes de ídolo em JSON, com editor de diagrama de braço embutido",
+      "Backing track de áudio real preso ao cursor da partitura, com velocidade sem alterar o tom",
+      "Modo palco: escolha da saída de áudio e monitor da entrada, para a pedaleira soar junto com o backing",
+    ],
+    tecnologias: [
+      "Next.js 16",
+      "TypeScript",
+      "React 19",
+      "alphaTab",
+      "File System Access API",
+      "Web Audio API",
+      "Vercel",
+    ],
+    imagem: "/woodshed.jpg",
+    links: [
+      {
+        rotulo: "Abrir o site",
+        href: "https://wood-shed.vercel.app",
+        peso: "principal",
+      },
+    ],
+    destaque: true,
+  },
+  {
+    slug: "plugin-blues",
+    nome: "plugin-Blues",
+    categoria: "Plugin de áudio",
+    status: "publicado",
+    ano: "2026",
+    resumo:
+      "Simulador de amplificador de guitarra em VST3, com três canais, gabinete por resposta de impulso e tone stack passivo modelado a partir do circuito real.",
+    descricao: [
+      "Simulador de amplificador de guitarra escrito em C++ sobre o framework JUCE, distribuído como VST3 para DAWs e como aplicativo independente para Windows.",
+      "A cadeia de processamento reproduz a ordem do circuito de um amplificador valvulado: estágio de entrada, noise gate, overdrive, pré-amplificador em cascata, gabinete por resposta de impulso, delay, reverb e estágio de saída com limitador.",
+      "O tone stack não usa filtros de prateleira genéricos. Ele é derivado da análise nodal do circuito passivo, o que faz grave, médio e agudo interagirem entre si como nos amplificadores reais — o médio escavado aparece sozinho ao zerar o controle, sem nenhum filtro dedicado a isso.",
+    ],
+    destaques: [
+      "Três canais com cadeias distintas: dois, três e quatro estágios de saturação",
+      "Recorte por diodo no canal de ritmo, com joelho curto e compressão rápida",
+      "Gabinete por resposta de impulso carregada pelo usuário, com duas vozes e mistura entre elas",
+      "Oversampling de 4x apenas nos estágios não lineares, com latência informada à DAW",
+      "Carregamento de resposta de impulso fora da thread de áudio, com cache e troca atômica",
+      "Zero alocação de memória na thread de áudio",
+    ],
+    tecnologias: ["C++", "JUCE 8", "VST3", "DSP", "Visual Studio"],
+    imagem: "/plugin-blues.jpg",
+    links: [
+      {
+        rotulo: "Baixar plugin",
+        href: "https://github.com/Wiliam89/plugin-Blues/releases",
+        peso: "principal",
+      },
+      {
+        rotulo: "Ver código",
+        href: "https://github.com/Wiliam89/plugin-Blues",
+      },
+    ],
+    destaque: true,
+  },
+  {
+    slug: "arauto",
+    nome: "Arauto",
+    categoria: "Plugin de áudio",
+    status: "publicado",
+    ano: "2026",
+    resumo:
+      "Plugin de guitarra de alto ganho com wah, dois estágios de drive, harmonizador, phaser, delay e reverb numa única cadeia.",
+    descricao: [
+      "Segundo plugin da linha, voltado a timbres modernos de alto ganho. A cadeia é maior que a do plugin-Blues e inclui efeitos que normalmente exigiriam três ou quatro plugins separados.",
+      "O harmonizador usa um motor de detecção de altura próprio, e o tone stack compartilha o mesmo núcleo derivado do circuito passivo usado no plugin-Blues.",
+      "O projeto tem gerenciador de presets em disco, camada de compatibilidade entre versões do JUCE e look and feel próprio.",
+    ],
+    destaques: [
+      "Cadeia completa: wah, dois drives, amplificador, gabinete, harmonizador, phaser, delay e reverb",
+      "Tone stack passivo com conjuntos de componentes intercambiáveis",
+      "Controles de ressonância e corte de grave pré-distorção no estágio de potência",
+      "Gerenciador de presets com arquivos em disco",
+      "Camada de compatibilidade para compilar em mais de uma versão do JUCE",
+    ],
+    tecnologias: ["C++", "JUCE 8", "VST3", "DSP", "Detecção de altura"],
+    imagem: "/arauto.jpg",
+    links: [
+      {
+        rotulo: "Baixar plugin",
+        href: "https://github.com/Wiliam89/Plugin-Arauto/releases",
+        peso: "principal",
+      },
+      {
+        rotulo: "Ver código",
+        href: "https://github.com/Wiliam89/Plugin-Arauto",
+      },
+    ],
+    destaque: true,
+  },
+  {
+    slug: "telemedicina",
+    nome: "Plataforma de telemedicina",
+    categoria: "Sistema web",
+    status: "em-desenvolvimento",
+    ano: "2026",
+    resumo:
+      "Plataforma multi-clínica para atendimento a distância, com agenda, prontuário, pagamento antes da fila e segurança no banco de dados. No ar como demonstração aberta.",
+    descricao: [
+      "Plataforma de telemedicina construída para uso comercial real, no modelo multi-clínica: várias clínicas convivem na mesma instalação, cada uma enxergando apenas os próprios dados.",
+      "O isolamento entre clínicas não é feito só no código da aplicação. Ele é imposto no próprio banco de dados, por políticas de segurança em nível de linha, de modo que uma consulta mal escrita não consegue vazar dados de outra clínica.",
+      "O projeto é um monorepo com API e site separados, migrações versionadas e uma trilha de auditoria que só aceita inserção.",
+      "A plataforma está no ar como ambiente de demonstração: dá para criar uma conta em menos de um minuto e percorrer o caminho inteiro, do cadastro ao atendimento, tanto como paciente quanto como profissional. Por ser ambiente de teste, os documentos emitidos ali não têm valor legal.",
+    ],
+    destaques: [
+      "Arquitetura multi-clínica com isolamento imposto no banco de dados",
+      "Agenda com grade semanal e travas de exclusão para impedir marcação dupla",
+      "Fuso horário por clínica",
+      "Trilha de auditoria somente-inserção, gravada na mesma transação da operação",
+      "Migrações versionadas e verificação automatizada do ambiente",
+      "Pagamento como parte do fluxo: o paciente entra na fila depois de pagar",
+    ],
+    tecnologias: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Drizzle",
+      "Supabase",
+      "pnpm",
+    ],
+    imagem: "/telemed1.jpg",
+    links: [
+      {
+        rotulo: "Abrir a plataforma",
+        href: "https://telemedicina-lake.vercel.app",
+        peso: "principal",
+      },
+      {
+        rotulo: "Ver código",
+        href: "https://github.com/Wiliam89/telemedicina",
+      },
+    ],
+    destaque: true,
+  },
+  {
+    slug: "central-de-downloads",
+    nome: "BRASA Audio",
+    categoria: "Site",
+    status: "publicado",
+    ano: "2026",
+    resumo:
+      "Site próprio para distribuir os plugins: identidade visual de rock, faixa rolante de equipamentos e download sempre na versão mais recente.",
+    descricao: [
+      "Um repositório de código não é lugar para um guitarrista baixar um plugin. O BRASA Audio existe para separar as duas audiências: quem quer ler o código continua no GitHub, quem quer usar o plugin tem uma página feita para isso.",
+      "Identidade visual própria, deliberadamente diferente deste portfólio: preto quente, laranja de válvula acesa e vermelho de cartaz de show, com tipografia de cartaz de banda.",
+      "Os botões de download apontam para o lançamento mais recente de cada repositório. Publicar uma versão nova no GitHub atualiza o site sozinho, sem tocar em uma linha de código.",
+    ],
+    destaques: [
+      "Download sempre na versão mais recente, sem manutenção manual",
+      "Faixa rolante de equipamentos com tratamento de cor unificado",
+      "Página própria para cada plugin, gerada a partir de um arquivo de dados",
+      "Passo a passo de instalação e perguntas frequentes",
+      "Silhueta aplicada como máscara de CSS, colorida pela paleta do site",
+    ],
+    tecnologias: ["Next.js", "TypeScript", "Tailwind CSS"],
+    imagem: "/central-downloads.jpg",
+    links: [
+      {
+        rotulo: "Abrir o site",
+        href: "https://wo-brasaaudio.vercel.app",
+        peso: "principal",
+      },
+      {
+        rotulo: "Ver código",
+        href: "https://github.com/Wiliam89/wo-brasaaudio",
+      },
+    ],
+  },
+];
+
+/** Busca um projeto pelo slug. Usada pela página /projetos/[slug]. */
+export function acharProjeto(slug: string): Projeto | undefined {
+  return projetos.find((p) => p.slug === slug);
+}
+
+export const rotuloStatus: Record<StatusProjeto, string> = {
+  publicado: "Publicado",
+  "em-desenvolvimento": "Em desenvolvimento",
+  concluido: "Concluído",
+};
