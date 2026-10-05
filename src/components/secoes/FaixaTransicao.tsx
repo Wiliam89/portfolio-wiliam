@@ -30,7 +30,7 @@ export default function FaixaTransicao() {
 
         <Revelar atraso={0.18}>
           <p className="max-w-md text-center text-sm leading-relaxed text-pedra">
-            Quatro projetos, dois deles prontos para baixar agora.
+            Seis projetos, dois deles prontos para baixar agora.
           </p>
         </Revelar>
       </div>

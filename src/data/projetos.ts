@@ -45,6 +45,44 @@ export type Projeto = {
 
 export const projetos: Projeto[] = [
   {
+    slug: "phg-solar",
+    nome: "PHG Solar",
+    categoria: "Site para cliente",
+    status: "publicado",
+    ano: "2026",
+    resumo:
+      "Site de uma empresa de energia solar de Divinópolis, com simulador de economia na conta de luz e todo o conteúdo editável num arquivo só, sem mexer no código.",
+    descricao: [
+      "Site institucional da PHG Solar, que projeta e instala sistemas fotovoltaicos em Divinópolis e região. A tarefa não era mostrar tecnologia: era transformar quem chega curioso com a conta de luz alta em uma conversa no WhatsApp.",
+      "Não usa framework. São três arquivos — HTML, CSS e JavaScript — e essa foi uma decisão, não uma limitação: carrega rápido no celular de quem está no meio de uma obra, não tem dependência para atualizar nem build para quebrar, e a empresa não fica refém de ninguém para manter a página no ar.",
+      "O que muda com o tempo vive num arquivo de dados: telefone, mensagem padrão do WhatsApp, redes sociais, vídeos das instalações e até os parâmetros do simulador. Trocar um vídeo ou corrigir a tarifa é editar uma linha desse arquivo.",
+      "O simulador é o centro da página. A pessoa arrasta a própria conta de luz, de R$ 150 a R$ 5.000, e vê na hora a economia estimada por mês, o tamanho aproximado do sistema e a projeção de 25 anos já considerando o aumento anual da tarifa.",
+    ],
+    destaques: [
+      "Simulador de economia com projeção de 25 anos, calculado no navegador",
+      "Conteúdo, contatos e parâmetros do simulador num único arquivo JSON",
+      "Botão de orçamento que abre o WhatsApp com a mensagem já escrita",
+      "Revelação por rolagem, linha do tempo do processo e números que contam sozinhos, com IntersectionObserver",
+      "Animações desligadas automaticamente para quem pede isso no sistema",
+      "Sem framework e sem build: três arquivos servidos como estão",
+      "Entregue com um passo a passo em PDF para a própria empresa manter o site",
+    ],
+    tecnologias: ["HTML", "CSS", "JavaScript", "JSON", "Vercel"],
+    imagem: "/phg-solar.jpg",
+    links: [
+      {
+        rotulo: "Abrir o site",
+        href: "https://phg-solar.vercel.app",
+        peso: "principal",
+      },
+      {
+        rotulo: "Ver código",
+        href: "https://github.com/Wiliam89/Site-PGHSolar",
+      },
+    ],
+    destaque: true,
+  },
+  {
     slug: "woodshed",
     nome: "Woodshed",
     categoria: "Sistema web",
@@ -164,18 +202,18 @@ export const projetos: Projeto[] = [
     status: "em-desenvolvimento",
     ano: "2026",
     resumo:
-      "Plataforma multi-clínica para atendimento a distância, com agenda, prontuário, pagamento antes da fila e segurança no banco de dados.",
+      "Plataforma multi-clínica para atendimento a distância, com agenda, prontuário, pagamento antes da fila e segurança no banco de dados. No ar como demonstração aberta.",
     descricao: [
       "Plataforma de telemedicina construída para uso comercial real, no modelo multi-clínica: várias clínicas convivem na mesma instalação, cada uma enxergando apenas os próprios dados.",
       "O isolamento entre clínicas não é feito só no código da aplicação. Ele é imposto no próprio banco de dados, por políticas de segurança em nível de linha, de modo que uma consulta mal escrita não consegue vazar dados de outra clínica.",
       "O projeto é um monorepo com API e site separados, migrações versionadas e uma trilha de auditoria que só aceita inserção.",
+      "A plataforma está no ar como ambiente de demonstração: dá para criar uma conta em menos de um minuto e percorrer o caminho inteiro, do cadastro ao atendimento, tanto como paciente quanto como profissional. Por ser ambiente de teste, os documentos emitidos ali não têm valor legal.",
     ],
     destaques: [
       "Arquitetura multi-clínica com isolamento imposto no banco de dados",
       "Agenda com grade semanal e travas de exclusão para impedir marcação dupla",
       "Fuso horário por clínica",
       "Trilha de auditoria somente-inserção, gravada na mesma transação da operação",
-      "Existe um ambiente de demonstração aberto: dá para criar uma conta em segundos e percorrer o fluxo de paciente e de profissional. É um ambiente de testes, então os documentos gerados ali não têm valor legal.",
       "Migrações versionadas e verificação automatizada do ambiente",
       "Pagamento como parte do fluxo: o paciente entra na fila depois de pagar",
     ],
@@ -190,14 +228,11 @@ export const projetos: Projeto[] = [
     ],
     imagem: "/telemed1.jpg",
     links: [
-      // Aponta direto para a tela de entrada, e não para a raiz: hoje a raiz
-      // responde 404. Quando ela voltar a abrir, basta apagar o "/entrar".
       {
-        rotulo: "Abrir a demonstração",
-        href: "https://telemedicina-lake.vercel.app/entrar",
+        rotulo: "Abrir a plataforma",
+        href: "https://telemedicina-lake.vercel.app",
         peso: "principal",
       },
-      
       {
         rotulo: "Ver código",
         href: "https://github.com/Wiliam89/telemedicina",
