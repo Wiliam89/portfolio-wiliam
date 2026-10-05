@@ -112,18 +112,11 @@ export default function Projetos() {
 
       <Revelar atraso={0.08}>
         <p className="mt-6 mb-14 max-w-2xl leading-relaxed text-pedra">
-<<<<<<< HEAD
           Seis projetos em áreas diferentes, todos abertos para você testar
           agora: um site entregue para uma empresa de energia solar, dois
           plugins de áudio para baixar, dois sites próprios no ar e a plataforma
           de telemedicina, que roda como demonstração enquanto segue em
           desenvolvimento.
-=======
-          Cinco projetos em áreas diferentes, todos abertos para você testar
-          agora: dois plugins de áudio para baixar, dois sites no ar e a
-          plataforma de telemedicina, que roda como demonstração enquanto segue
-          em desenvolvimento.
->>>>>>> db13eb2bfeac5d1d3297621ca68921ae975c6a98
         </p>
       </Revelar>
 
